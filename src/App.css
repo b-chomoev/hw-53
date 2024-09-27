@@ -14,12 +14,12 @@
 
 .input-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
 .inputAddTaskForm {
   padding: 10px;
-  margin-right: 10px;
   font-size: 16px;
+  flex: 1;
 }

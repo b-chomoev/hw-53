@@ -2,14 +2,18 @@ import './AddTaskForm.css';
 import * as React from "react";
 
 interface Props {
-    onButtonClicked: React.MouseEventHandler;
+    name: string;
+    onButtonClick: React.MouseEventHandler;
+    onAddTask: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const AddTaskForm: React.FC<Props> = ({onButtonClicked}) => {
+const AddTaskForm: React.FC<Props> = ({name, onButtonClick, onAddTask}) => {
+
+
     return (
         <div>
-            <input type="text" value='' name='inputTask' className='inputAddTaskForm' required />
-            <button type='button' className='btnAdd' onClick={onButtonClicked}>Add Task</button>
+            <input type="text" value={name} name='inputTask' className='inputAddTaskForm' onChange={onAddTask} required/>
+            <button type='button' className='btnAdd' onClick={onButtonClick}>Add Task</button>
         </div>
     );
 };

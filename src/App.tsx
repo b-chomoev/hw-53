@@ -2,6 +2,7 @@ import './App.css';
 import AddTaskForm from "./components/AddTaskForm/AddTaskForm.tsx";
 import Task from "./components/Task/Task.tsx";
 import {useState} from "react";
+import * as React from "react";
 
 interface ITask {
     id: string;
@@ -14,18 +15,28 @@ const App = () => {
         {id: '2', name: 'Walk with dog'},
         {id: '3', name: 'Do homework'},
     ]);
+    const [currentTask, setCurrentTask] = useState('');
 
     const addTask = () => {
-        console.log('clicked');
+        const copyTasks = [...task];
+        copyTasks.push({id: String(Date.now()), name: currentTask});
+
+        setTasks(copyTasks);
+        setCurrentTask('');
+        console.log(task);
+    };
+
+    const addTaskFromInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCurrentTask(e.target.value);
     };
 
     return (
         <div className='container'>
             <div className='input-container'>
-                <AddTaskForm onButtonClicked={addTask} />
+                <AddTaskForm name={currentTask} onButtonClick={addTask} onAddTask={addTaskFromInput}/>
             </div>
             {task.map(t => (
-                <Task key={t.id} id={t.id} name={t.name} />
+                <Task key={t.id} id={t.id} name={t.name}/>
             ))}
         </div>
     );
