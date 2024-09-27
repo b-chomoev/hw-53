@@ -23,11 +23,15 @@ const App = () => {
 
         setTasks(copyTasks);
         setCurrentTask('');
-        console.log(task);
     };
 
     const addTaskFromInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentTask(e.target.value);
+    };
+
+    const deleteTask = (id: string) => {
+        const copyTasks = task.filter(t => t.id !== id);
+        setTasks(copyTasks);
     };
 
     return (
@@ -36,7 +40,7 @@ const App = () => {
                 <AddTaskForm name={currentTask} onButtonClick={addTask} onAddTask={addTaskFromInput}/>
             </div>
             {task.map(t => (
-                <Task key={t.id} id={t.id} name={t.name}/>
+                <Task key={t.id} id={t.id} name={t.name} onDelete={() => deleteTask(t.id)} />
             ))}
         </div>
     );
