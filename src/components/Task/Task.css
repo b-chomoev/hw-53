@@ -1,0 +1,12 @@
+.tasks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+}
+
+.taskButton {
+    margin-left: 10px;
+}

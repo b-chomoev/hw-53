@@ -4,3 +4,22 @@
   padding: 2rem;
   text-align: center;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.inputAddTaskForm {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+}
